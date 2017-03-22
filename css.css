@@ -18,6 +18,8 @@ body{
   	background-color:#CC4D39;
 }
 #content{
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
 	position:relative;
     top:30%;
     font-size:5vmin;
