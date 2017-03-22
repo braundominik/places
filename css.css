@@ -1,0 +1,25 @@
+html{
+	height:100%;
+}
+
+body{
+	height:100%;
+	margin:0px;
+	text-align:center;
+}
+
+#wrapper {
+	width:30vmin;
+	height:30vmin;
+	position:relative;
+    top: 50%; left: 50%;
+  	transform: translate(-50%,-50%);
+  	border:3px solid #CC4D39;
+  	background-color:#CC4D39;
+}
+#content{
+	position:relative;
+    top:30%;
+    font-size:5vmin;
+    font-family:Arial;
+}
