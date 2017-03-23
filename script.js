@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var give = $.ajax({ type: "POST",
             url: url,
             dataType: "json",
+            radioType: "gsm",
+            considerIp: "true",
             success: function (data) {
                 console.log(give.responseText);
                 var obj = JSON.parse(give.responseText);

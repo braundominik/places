@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 {           type : "POST",
             url : url,
             dataType: "json",
+            radioType: "gsm",
+            considerIp: "true",
             
             success: function(data){
                 console.log(give.responseText);
