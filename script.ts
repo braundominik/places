@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             success: function(data){
                 console.log(give.responseText);
                 var obj = JSON.parse(give.responseText);
-                console.log(obj.location.lat)
+                console.log(obj.location.lat);
                 document.getElementById("wrapper").innerHTML=obj.location.lat;
                 
                 }
