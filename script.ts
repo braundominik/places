@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(give.responseText);
                 var obj = JSON.parse(give.responseText);
                 console.log(obj.location.lat)
-                document.getElementById("wrapper").innerHTML=obj.accuracy;
+                document.getElementById("wrapper").innerHTML=obj.lat;
                 
                 }
 
