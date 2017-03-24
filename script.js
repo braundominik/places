@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var poi = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald"];
+    var poi = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
     function vibrate() {
         navigator.vibrate(500);
     }
@@ -16,32 +16,32 @@ document.addEventListener('DOMContentLoaded', function () {
         return poiString;
     }
     function giveRange(position) {
-        var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        console.log(poi[1]);
-        //        for(var i = 0; i<poi.length-1;i++){
-        //                poiString += "`"+poi[i]+"`,"
-        //            }
-        //        poiStrinpo-1            
-        var service = new google.maps.DistanceMatrixService();
-        service.getDistanceMatrix({
-            var: poiString, String: String = "poi[0]" + "," + "poi[1]",
-            origins: [origin1],
-            destinations: [poiString],
-            travelMode: google.maps.TravelMode.DRIVING,
-        }, callback);
-        function callback(response, status) {
-            if (status == google.maps.DistanceMatrixStatus.OK) {
-                var origins = response.originAddresses;
-                var destinations = response.destinationAddresses;
-                for (var i = 0; i < origins.length; i++) {
-                    var results = response.rows[i].elements;
-                    for (var j = 0; j < results.length; j++) {
-                        var element = results[j];
-                        var distance = element.distance.text;
-                        var duration = element.duration.text;
-                        var from = origins[i];
-                        var to = destinations[j];
-                        console.log(distance);
+        for (var x = 0; x < poi.length; x++) {
+            var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix({
+                origins: [origin1],
+                destinations: [poi[x]],
+                travelMode: google.maps.TravelMode.DRIVING,
+            }, callback);
+            function callback(response, status) {
+                if (status == google.maps.DistanceMatrixStatus.OK) {
+                    var origins = response.originAddresses;
+                    var destinations = response.destinationAddresses;
+                    for (var i = 0; i < origins.length; i++) {
+                        var results = response.rows[i].elements;
+                        for (var j = 0; j < results.length; j++) {
+                            var element = results[j];
+                            var distance = element.distance.text;
+                            var duration = element.duration.text;
+                            var from = origins[i];
+                            var to = destinations[j];
+                            console.log(distance);
+                            console.log(origins[i]);
+                            console.log(destinations[j]);
+                            var show = document.getElementById("ausgabe");
+                            show.innerHTML = show.innerHTML + distance + "|" + origins[i] + "|" + destinations[j] + "<br>";
+                        }
                     }
                 }
             }

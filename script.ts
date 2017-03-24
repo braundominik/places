@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    var poi: String[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald"];
-
+    var poi: String[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald","Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
     function vibrate(): void {
         navigator.vibrate(500);
     }
@@ -23,23 +22,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function giveRange(position): void {
-
-        var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        console.log(poi[1]);
-
-
-        //        for(var i = 0; i<poi.length-1;i++){
-        //                poiString += "`"+poi[i]+"`,"
-        //            }
-        //        poiStrinpo-1            
         
+        for (var x=0;x<poi.length;x++){
+
+        var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);      
         
         var service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix(
             {
-                var poiString: String = "poi[0]" + "," + "poi[1]";
                 origins: [origin1],
-                destinations: [poiString],
+                destinations: [poi[x]],
                 travelMode: google.maps.TravelMode.DRIVING,
             }, callback);
 
@@ -57,12 +49,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         var from = origins[i];
                         var to = destinations[j];
                         console.log(distance);
+                        console.log(origins[i]);
+                        console.log(destinations[j]);
+                        var show = document.getElementById("ausgabe")
+                        show.innerHTML=show.innerHTML+distance+"|"+origins[i]+"|"+destinations[j]+"<br>";
+                        
+                        
                     }
 
                 }
             }
         }
     }
+ }
 
     //      var url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=48.048245900000005,8.2089964&destinations=48.0510403,8.2083783&mode=walking&key=AIzaSyCvET66xGzrZGKTGrx9nQIH-Y7T2nnwxRk";
 
