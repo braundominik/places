@@ -1,15 +1,16 @@
+var x = document.getElementById("ausgabe");
 document.addEventListener('DOMContentLoaded', init);
 var poi = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
 function init() {
-    document.getElementById("wrapper").addEventListener("click", giveLocation);
+    document.getElementById("wrapper").addEventListener("click", getLocation);
 }
 function vibrate() {
     navigator.vibrate(500);
     console.log("vibrate");
 }
-var x = document.getElementById("ausgabe");
 function getLocation() {
     if (navigator.geolocation) {
+        console.log("showPos");
         navigator.geolocation.watchPosition(showPosition);
     }
     else {
@@ -17,7 +18,9 @@ function getLocation() {
     }
 }
 function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude +
+    console.log("inshowpos");
+    console.log(position.coords.latitude);
+    document.getElementById("ausgabe").innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
 }
 function giveLocation() {

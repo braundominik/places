@@ -1,8 +1,12 @@
+
+var x: HTMLElement = document.getElementById("ausgabe");
 document.addEventListener('DOMContentLoaded', init);
 var poi: String[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
 
+
 function init(): void {
-    document.getElementById("wrapper").addEventListener("click", giveLocation);
+    
+    document.getElementById("wrapper").addEventListener("click", getLocation);
 }
 
 
@@ -11,17 +15,19 @@ function vibrate(): void {
     console.log("vibrate")
 }
 
-var x: HTMLElement = document.getElementById("ausgabe");
 function getLocation(): void {
     if (navigator.geolocation) {
+        console.log("showPos");
         navigator.geolocation.watchPosition(showPosition);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
-function showPosition(position: any): void {
-    x.innerHTML = "Latitude: " + position.coords.latitude +
+function showPosition(position): void {
+    console.log("inshowpos");
+    console.log(position.coords.latitude);
+    document.getElementById("ausgabe").innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
 }
 
