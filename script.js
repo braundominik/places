@@ -5,6 +5,7 @@ function init() {
 }
 function vibrate() {
     navigator.vibrate(500);
+    console.log("vibrate");
 }
 function giveLocation() {
     if (navigator.geolocation) {

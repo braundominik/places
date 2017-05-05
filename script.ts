@@ -8,6 +8,7 @@ function init(): void {
 
 function vibrate(): void {
     navigator.vibrate(500);
+    console.log("vibrate")
 }
 
 function giveLocation() {
