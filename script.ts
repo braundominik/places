@@ -5,7 +5,7 @@ var poi: String[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "
 
 
 function init(): void {
-    
+
     document.getElementById("wrapper").addEventListener("click", getLocation);
 }
 
@@ -18,7 +18,7 @@ function vibrate(): void {
 function getLocation(): void {
     if (navigator.geolocation) {
         console.log("showPos");
-        navigator.geolocation.watchPosition(showPosition);
+        navigator.geolocation.watchPosition(checkRange);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -31,13 +31,13 @@ function showPosition(position): void {
         "<br>Longitude: " + position.coords.longitude;
 }
 
-function giveLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(giveRange);
-    } else {
-        document.getElementById("wrapper").innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
+//function giveLocation() {
+//    if (navigator.geolocation) {
+//        navigator.geolocation.getCurrentPosition(giveRange);
+//    } else {
+//        document.getElementById("wrapper").innerHTML = "Geolocation is not supported by this browser.";
+//    }
+//}
 
 function generatePoi(): String {
 
@@ -45,11 +45,30 @@ function generatePoi(): String {
     return poiString;
 }
 
+function checkRange(position): void {
+    var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var des1 = poi[0];
+
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+        {
+            origins: [origin1],
+            destinations: [des1],
+            travelMode: 'WALKING',
+        }, callback);
+
+    function callback(response, status) {
+        document.getElementById("ausgabe").innerHTML = response.rows[0].elements[0].distance.value;
+        console.log(response.rows[0].elements[0].distance.value);
+        console.log(status);
+    }
+}
+
 
 
 function giveRange(position): void {
 
-    for (var x = 0; x < poi.length; x++) {
+    for (var x: number = 0; x < poi.length; x++) {
 
         var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -66,14 +85,17 @@ function giveRange(position): void {
                 var origins = response.originAddresses;
                 var destinations = response.destinationAddresses;
 
-                for (var i = 0; i < origins.length; i++) {
+                for (var i: number = 0; i < origins.length; i++) {
                     var results = response.rows[i].elements;
                     for (var j = 0; j < results.length; j++) {
+
                         var element = results[j];
                         var distance = element.distance.text;
                         var duration = element.duration.text;
                         var from = origins[i];
                         var to = destinations[j];
+                        var og = new google.maps.adress(destinations[j]);
+                        console.log(og);
                         console.log(distance);
                         console.log(origins[i]);
                         console.log(destinations[j]);

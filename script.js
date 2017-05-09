@@ -11,7 +11,7 @@ function vibrate() {
 function getLocation() {
     if (navigator.geolocation) {
         console.log("showPos");
-        navigator.geolocation.watchPosition(showPosition);
+        navigator.geolocation.watchPosition(checkRange);
     }
     else {
         x.innerHTML = "Geolocation is not supported by this browser.";
@@ -23,17 +23,31 @@ function showPosition(position) {
     document.getElementById("ausgabe").innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
 }
-function giveLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(giveRange);
-    }
-    else {
-        document.getElementById("wrapper").innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
+//function giveLocation() {
+//    if (navigator.geolocation) {
+//        navigator.geolocation.getCurrentPosition(giveRange);
+//    } else {
+//        document.getElementById("wrapper").innerHTML = "Geolocation is not supported by this browser.";
+//    }
+//}
 function generatePoi() {
     console.log(poiString);
     return poiString;
+}
+function checkRange(position) {
+    var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var des1 = poi[0];
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({
+        origins: [origin1],
+        destinations: [des1],
+        travelMode: 'WALKING',
+    }, callback);
+    function callback(response, status) {
+        document.getElementById("ausgabe").innerHTML = response.rows[0].elements[0].distance.value;
+        console.log(response.rows[0].elements[0].distance.value);
+        console.log(status);
+    }
 }
 function giveRange(position) {
     for (var x = 0; x < poi.length; x++) {
@@ -56,6 +70,8 @@ function giveRange(position) {
                         var duration = element.duration.text;
                         var from = origins[i];
                         var to = destinations[j];
+                        var og = new google.maps.adress(destinations[j]);
+                        console.log(og);
                         console.log(distance);
                         console.log(origins[i]);
                         console.log(destinations[j]);
