@@ -2,7 +2,7 @@
 var x: HTMLElement = document.getElementById("ausgabe");
 document.addEventListener('DOMContentLoaded', init);
 var poi: String[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
-
+var oldRange: number = 99999999999999999;
 
 function init(): void {
 
@@ -58,6 +58,11 @@ function checkRange(position): void {
         }, callback);
 
     function callback(response, status) {
+        if (oldRange < response.rows[0].elements[0].distance.value) {
+            navigator.vibrate(1000);
+            console.log("vibrate");
+        }
+        oldRange = response.rows[0].elements[0].distance.value;
         document.getElementById("ausgabe").innerHTML = response.rows[0].elements[0].distance.value;
         console.log(response.rows[0].elements[0].distance.value);
         console.log(status);

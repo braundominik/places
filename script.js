@@ -1,6 +1,7 @@
 var x = document.getElementById("ausgabe");
 document.addEventListener('DOMContentLoaded', init);
 var poi = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
+var oldRange = 99999999999999999;
 function init() {
     document.getElementById("wrapper").addEventListener("click", getLocation);
 }
@@ -44,6 +45,11 @@ function checkRange(position) {
         travelMode: 'WALKING',
     }, callback);
     function callback(response, status) {
+        if (oldRange < response.rows[0].elements[0].distance.value) {
+            navigator.vibrate(1000);
+            console.log("vibrate");
+        }
+        oldRange = response.rows[0].elements[0].distance.value;
         document.getElementById("ausgabe").innerHTML = response.rows[0].elements[0].distance.value;
         console.log(response.rows[0].elements[0].distance.value);
         console.log(status);
