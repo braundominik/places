@@ -1,0 +1,88 @@
+bees[n].status = "targetting";body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #243D4F;
+	color: #FFF;
+	font-size: 28px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align:center;
+
+}
+
+#oben {
+	background-color: #243D4F;
+	height: 210px;
+	width: 100%;
+	margin-top:20px;
+}
+
+#oben-setting {
+	background-color: #606A7A;
+	height: 60px;
+	width: 100%;
+	font-size: 18px;
+}
+
+#oben-setting-night {
+	background-color: #231F20;
+	height: 60px;
+	width: 100%;
+	font-size: 18px;
+}
+
+#rand-oben {
+	background-color: #606A7A;
+	height: 10px;
+	width: 100%;
+	text-align:left;
+}
+
+#rand-oben-night {
+	background-color: #231F20;
+	height: 10px;
+	width: 100%;
+	text-align:left;
+}
+
+
+#mittig {
+	background-color: #243D4F;
+	height: 20px;
+	width: 100%;
+}
+
+#logo{
+	text-align:center;
+}
+
+#unten {
+	background-color: #243D4F;
+	height: 210px;
+	width: 100%;
+	margin-bottom:20px;
+}
+
+#unten-setting {
+	background-color: #243D4F;
+	height: 355px;
+	width: 100%;
+}
+
+
+#kasten-setting {
+	background-color: #243D4F;
+	margin-top: 55px;
+	margin-left: 45px;
+	margin-right: 55px;
+	height: 300px;
+	text-align:left;
+	font-size: 16px;
+}
+
+
+
+#zeitleiste {
+	font-size: 18px;
+	padding-top: 140px;
+	color: #62BB46;}
+
