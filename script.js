@@ -12,7 +12,7 @@ function vibrate() {
 function getLocation() {
     if (navigator.geolocation) {
         console.log("showPos");
-        navigator.geolocation.watchPosition(checkRange);
+        navigator.geolocation.watchPosition(calcDista);
     }
     else {
         x.innerHTML = "Geolocation is not supported by this browser.";
@@ -34,6 +34,11 @@ function showPosition(position) {
 function generatePoi() {
     console.log(poiString);
     return poiString;
+}
+function calcDistance(position) {
+    var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var p2 = new google.maps.LatLng(46.0438317, 9.75936230000002);
+    document.getElementById("ausgabe").innerHTML = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
 }
 function checkRange(position) {
     var origin1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
