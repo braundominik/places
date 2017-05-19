@@ -65,8 +65,8 @@ var places;
                             }
                             oldRange = dist;
                             document.getElementById("ausgabe").innerHTML = (dist);
-                            setTimeout(endWatch, 1000);
                         });
+                        setTimeout(endWatch, 1000);
                     }
                     function endWatch() {
                         console.log("endWatch");
