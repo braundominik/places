@@ -9,7 +9,7 @@ namespace places {
 
     function init(): void {
 
-        document.getElementById("wrapper").addEventListener("click", geocodeIt);
+        document.getElementById("wrapper").addEventListener("click", geocodeMe);
     }
 
 
@@ -48,4 +48,45 @@ namespace places {
             }
         });
     }
+
+
+
+    function geocodeMe(): void {
+        var geocoder: any = new google.maps.Geocoder();
+        var address: string = poi[0];
+
+        geocoder.geocode({ "address": address }, function(results: any, status: any): void {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+
+                let lat: string = results[0].geometry.location.lat();
+                let lng: string = results[0].geometry.location.lng();
+
+                if (navigator.geolocation) {
+                    console.log("showPos");
+                    navigator.geolocation.watchPosition(function(position: any): void {
+                        console.log(lat);
+                        console.log(lng);
+                        var p1: any = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        var p2: any = new google.maps.LatLng(lat, lng);
+
+                        let dist: any = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
+
+                        if (oldRange < dist) {
+                            navigator.vibrate(1000);
+                            console.log("vibrate");
+                        }
+                        oldRange = dist;
+
+                        document.getElementById("ausgabe").innerHTML = (dist);
+
+                    });
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+        });
+    }
+
 }

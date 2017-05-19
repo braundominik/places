@@ -8,7 +8,7 @@ var places;
     var latyay;
     var lngyay;
     function init() {
-        document.getElementById("wrapper").addEventListener("click", geocodeIt);
+        document.getElementById("wrapper").addEventListener("click", geocodeMe);
     }
     function vibrate() {
         navigator.vibrate(500);
@@ -38,6 +38,35 @@ var places;
         geocoder.geocode({ "address": address }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 getLocation(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+            }
+        });
+    }
+    function geocodeMe() {
+        var geocoder = new google.maps.Geocoder();
+        var address = poi[0];
+        geocoder.geocode({ "address": address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                let lat = results[0].geometry.location.lat();
+                let lng = results[0].geometry.location.lng();
+                if (navigator.geolocation) {
+                    console.log("showPos");
+                    navigator.geolocation.watchPosition(function (position) {
+                        console.log(lat);
+                        console.log(lng);
+                        var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        var p2 = new google.maps.LatLng(lat, lng);
+                        let dist = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
+                        if (oldRange < dist) {
+                            navigator.vibrate(1000);
+                            console.log("vibrate");
+                        }
+                        oldRange = dist;
+                        document.getElementById("ausgabe").innerHTML = (dist);
+                    });
+                }
+                else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
             }
         });
     }
