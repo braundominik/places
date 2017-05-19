@@ -50,34 +50,41 @@ var places;
                 let lng = results[0].geometry.location.lng();
                 if (navigator.geolocation) {
                     console.log("showPos");
+                    var options = { enableHighAccuary: true };
                     startWatch();
                     function startWatch() {
                         console.log("startWatch");
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            console.log(lat);
-                            console.log(lng);
-                            var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                            var p2 = new google.maps.LatLng(lat, lng);
-                            let dist = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
-                            if (oldRange < dist) {
-                                navigator.vibrate(1000);
-                                console.log("vibrate");
-                            }
-                            oldRange = dist;
-                            document.getElementById("ausgabe").innerHTML = (dist);
-                        });
+                        navigator.geolocation.getCurrentPosition(position, error, options);
                         setTimeout(endWatch, 1000);
                     }
-                    function endWatch() {
-                        document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
-                        setTimeout(startWatch, 1000);
+                    function position(position) {
+                        console.log(lat);
+                        console.log(lng);
+                        var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        var p2 = new google.maps.LatLng(lat, lng);
+                        let dist = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
+                        if (oldRange < dist) {
+                            navigator.vibrate(1000);
+                            console.log("vibrate");
+                        }
+                        oldRange = dist;
+                        document.getElementById("ausgabe").innerHTML = (dist);
                     }
                 }
-                else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
+                function error(err) {
+                    console.log(err);
                 }
+                function endWatch() {
+                    console.log("endWatch");
+                    document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
+                    setTimeout(startWatch, 1000);
+                }
+            }
+            else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
             }
         });
     }
+    ;
 })(places || (places = {}));
 //# sourceMappingURL=script2.js.map
