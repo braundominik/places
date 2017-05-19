@@ -53,7 +53,7 @@ var places;
                     startWatch();
                     function startWatch() {
                         console.log("startWatch");
-                        navigator.geolocation.watchPosition(function (position) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
                             console.log(lat);
                             console.log(lng);
                             var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -69,8 +69,8 @@ var places;
                         setTimeout(endWatch, 1000);
                     }
                     function endWatch() {
-                        console.log("endWatch");
-                        startWatch();
+                        document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
+                        setTimeout(startWatch, 1000);
                     }
                 }
                 else {

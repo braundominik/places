@@ -67,7 +67,7 @@ namespace places {
                     startWatch();
                     function startWatch(): void {
                         console.log("startWatch");
-                        navigator.geolocation.watchPosition(function(position: any): void {
+                        navigator.geolocation.getCurrentPosition(function(position: any): void {
                             console.log(lat);
                             console.log(lng);
                             var p1: any = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -82,15 +82,15 @@ namespace places {
                             oldRange = dist;
 
                             document.getElementById("ausgabe").innerHTML = (dist);
-                            
+
 
                         });
                         setTimeout(endWatch, 1000);
                     }
 
                     function endWatch(): void {
-                        console.log("endWatch");
-                        startWatch();
+                        document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
+                        setTimeout(startWatch, 1000);
                     }
 
 
