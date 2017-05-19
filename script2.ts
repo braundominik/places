@@ -64,23 +64,35 @@ namespace places {
 
                 if (navigator.geolocation) {
                     console.log("showPos");
-                    navigator.geolocation.watchPosition(function(position: any): void {
-                        console.log(lat);
-                        console.log(lng);
-                        var p1: any = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                        var p2: any = new google.maps.LatLng(lat, lng);
+                    startWatch();
+                    function startWatch(): void {
+                        console.log("startWatch");
+                        navigator.geolocation.watchPosition(function(position: any): void {
+                            console.log(lat);
+                            console.log(lng);
+                            var p1: any = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            var p2: any = new google.maps.LatLng(lat, lng);
 
-                        let dist: any = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
+                            let dist: any = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
 
-                        if (oldRange < dist) {
-                            navigator.vibrate(1000);
-                            console.log("vibrate");
-                        }
-                        oldRange = dist;
+                            if (oldRange < dist) {
+                                navigator.vibrate(1000);
+                                console.log("vibrate");
+                            }
+                            oldRange = dist;
 
-                        document.getElementById("ausgabe").innerHTML = (dist);
+                            document.getElementById("ausgabe").innerHTML = (dist);
+                            setTimeout(endWatch, 1000);
 
-                    });
+                        });
+                    }
+
+                    function endWatch(): void {
+                        console.log("endWatch");
+                        startWatch();
+                    }
+
+
                 } else {
                     x.innerHTML = "Geolocation is not supported by this browser.";
                 }

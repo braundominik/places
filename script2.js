@@ -50,19 +50,28 @@ var places;
                 let lng = results[0].geometry.location.lng();
                 if (navigator.geolocation) {
                     console.log("showPos");
-                    navigator.geolocation.watchPosition(function (position) {
-                        console.log(lat);
-                        console.log(lng);
-                        var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                        var p2 = new google.maps.LatLng(lat, lng);
-                        let dist = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
-                        if (oldRange < dist) {
-                            navigator.vibrate(1000);
-                            console.log("vibrate");
-                        }
-                        oldRange = dist;
-                        document.getElementById("ausgabe").innerHTML = (dist);
-                    });
+                    startWatch();
+                    function startWatch() {
+                        console.log("startWatch");
+                        navigator.geolocation.watchPosition(function (position) {
+                            console.log(lat);
+                            console.log(lng);
+                            var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            var p2 = new google.maps.LatLng(lat, lng);
+                            let dist = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
+                            if (oldRange < dist) {
+                                navigator.vibrate(1000);
+                                console.log("vibrate");
+                            }
+                            oldRange = dist;
+                            document.getElementById("ausgabe").innerHTML = (dist);
+                            setTimeout(endWatch, 1000);
+                        });
+                    }
+                    function endWatch() {
+                        console.log("endWatch");
+                        startWatch();
+                    }
                 }
                 else {
                     x.innerHTML = "Geolocation is not supported by this browser.";
