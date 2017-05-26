@@ -41,9 +41,9 @@ var places;
                 if (navigator.geolocation) {
                     console.log("showPos");
                     var options = {
-                        timeout: 0,
+                        timeout: 5000,
                         enableHighAccuracy: true,
-                        maximumAge: Infinity
+                        maximumAge: 0
                     };
                     startWatch();
                     function startWatch() {
