@@ -70,7 +70,7 @@ var places;
                             console.log("vibrate");
                         }
                         oldRange = dist;
-                        document.getElementById("ausgabe").innerHTML = position.coords.accuracy;
+                        document.getElementById("ausgabe").innerHTML = "Accuracy " + position.coords.accuracy + "Range " + dist;
                     }
                 }
                 function error(err) {
