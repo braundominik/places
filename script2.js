@@ -41,6 +41,7 @@ var places;
                 if (navigator.geolocation) {
                     console.log("showPos");
                     var options = {
+                        timeout: 0,
                         enableHighAccuracy: true,
                         maximumAge: Infinity
                     };
@@ -67,6 +68,7 @@ var places;
                 function error(err) {
                     console.log("bla");
                     console.log(err);
+                    document.getElementById("ausgabe").innerHTML = err;
                 }
                 function endWatch() {
                     document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);

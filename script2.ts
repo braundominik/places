@@ -53,6 +53,7 @@ namespace places {
                     console.log("showPos");
 
                     var options = {
+                        timeout: 0,
                         enableHighAccuracy: true,
                         maximumAge: Infinity
                     };
@@ -87,6 +88,7 @@ namespace places {
                 function error(err: any): void {
                     console.log("bla");
                     console.log(err);
+                    document.getElementById("ausgabe").innerHTML = err;
                 }
 
 
