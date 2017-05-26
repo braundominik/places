@@ -53,9 +53,9 @@ namespace places {
                     console.log("showPos");
 
                     var options = {
-                        timeout: 5000,
+                        timeout: 1000,
                         enableHighAccuracy: true,
-                        maximumAge: 0
+                        maximumAge: 1000
                     };
 
                     startWatch();
