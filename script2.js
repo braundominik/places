@@ -4,7 +4,6 @@ var places;
     document.addEventListener("DOMContentLoaded", init);
     var poi = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
     var oldRange = 99999999999999999;
-    var bla;
     var latyay;
     var lngyay;
     function init() {
@@ -50,32 +49,35 @@ var places;
                 let lng = results[0].geometry.location.lng();
                 if (navigator.geolocation) {
                     console.log("showPos");
-                    var options = { enableHighAccuary: true };
+                    var options = {
+                        enableHighAccuracy: true,
+                        maximumAge: Infinity
+                    };
                     startWatch();
                     function startWatch() {
-                        console.log("startWatch");
                         navigator.geolocation.getCurrentPosition(position, error, options);
                         setTimeout(endWatch, 1000);
                     }
                     function position(position) {
+                        console.log(position);
                         console.log(lat);
                         console.log(lng);
                         var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                         var p2 = new google.maps.LatLng(lat, lng);
                         let dist = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
-                        if (oldRange < dist) {
+                        if (Math.sign(oldRange - dist)) {
                             navigator.vibrate(1000);
                             console.log("vibrate");
                         }
                         oldRange = dist;
-                        document.getElementById("ausgabe").innerHTML = (dist);
+                        document.getElementById("ausgabe").innerHTML = position.coords.accuracy;
                     }
                 }
                 function error(err) {
+                    console.log("bla");
                     console.log(err);
                 }
                 function endWatch() {
-                    console.log("endWatch");
                     document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
                     setTimeout(startWatch, 1000);
                 }

@@ -3,7 +3,6 @@ namespace places {
     document.addEventListener("DOMContentLoaded", init);
     var poi: string[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
     var oldRange: number = 99999999999999999;
-    var bla: any[];
     var latyay: any;
     var lngyay: any;
 
@@ -65,16 +64,19 @@ namespace places {
                 if (navigator.geolocation) {
                     console.log("showPos");
 
-                    var options = { enableHighAccuary: true }
+                    var options = {
+                        enableHighAccuracy: true,
+                        maximumAge: Infinity
+                    };
 
                     startWatch();
                     function startWatch(): void {
-                        console.log("startWatch");
                         navigator.geolocation.getCurrentPosition(position, error, options);
                         setTimeout(endWatch, 1000);
                     }
 
                     function position(position) {
+                        console.log(position);
                         console.log(lat);
                         console.log(lng);
                         var p1: any = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -82,25 +84,25 @@ namespace places {
 
                         let dist: any = google.maps.geometry.spherical.computeDistanceBetween(p1, p2).toFixed(2);
 
-                        if (oldRange < dist) {
+                        if (Math.sign(oldRange - dist)) {
                             navigator.vibrate(1000);
                             console.log("vibrate");
                         }
                         oldRange = dist;
 
-                        document.getElementById("ausgabe").innerHTML = (dist);
+                        document.getElementById("ausgabe").innerHTML = position.coords.accuracy;
 
 
                     }
                 }
 
                 function error(err) {
+                    console.log("bla");
                     console.log(err);
                 }
 
 
                 function endWatch(): void {
-                    console.log("endWatch");
                     document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
                     setTimeout(startWatch, 1000);
                 }
