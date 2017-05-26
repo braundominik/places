@@ -31,15 +31,6 @@ var places;
         var p2 = new google.maps.LatLng(lat, lng);
         document.getElementById("ausgabe").innerHTML = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
     }
-    function geocodeIt() {
-        var geocoder = new google.maps.Geocoder();
-        var address = "new york";
-        geocoder.geocode({ "address": address }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                getLocation(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-            }
-        });
-    }
     function geocodeMe() {
         var geocoder = new google.maps.Geocoder();
         var address = poi[0];
@@ -87,6 +78,5 @@ var places;
             }
         });
     }
-    ;
 })(places || (places = {}));
 //# sourceMappingURL=script2.js.map

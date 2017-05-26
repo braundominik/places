@@ -36,18 +36,6 @@ namespace places {
         document.getElementById("ausgabe").innerHTML = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
     }
 
-    function geocodeIt() {
-        var geocoder = new google.maps.Geocoder();
-        var address = "new york";
-
-        geocoder.geocode({ "address": address }, function(results, status) {
-
-            if (status == google.maps.GeocoderStatus.OK) {
-                getLocation(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-            }
-        });
-    }
-
 
 
     function geocodeMe(): void {
@@ -96,7 +84,7 @@ namespace places {
                     }
                 }
 
-                function error(err) {
+                function error(err: any): void {
                     console.log("bla");
                     console.log(err);
                 }
@@ -111,9 +99,7 @@ namespace places {
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
-        }
+        });
 
-});
-}
-
+    }
 }
