@@ -50,6 +50,7 @@ var places;
                         navigator.geolocation.getCurrentPosition(position, error, options);
                         setTimeout(endWatch, 1000);
                     }
+                    let hoehe = 10;
                     function position(position) {
                         console.log(position);
                         console.log(lat);
@@ -62,16 +63,17 @@ var places;
                             console.log("vibrate");
                         }
                         oldRange = dist;
-                        document.getElementById("ausgabe").innerHTML = "Accuracy " + position.coords.accuracy + "Range " + dist;
+                        //                        document.getElementById("ausgabe").innerHTML = "Accuracy " + position.coords.accur                        
+                        document.getElementById("ausgabe").innerHTML += "Lat " + position.coords.latitude + "Long " + position.coords.longitude + "</br>";
+                        hoehe = hoehe + 20;
+                        document.getElementById("ausgabe").style.height = hoehe + "px";
                     }
                 }
                 function error(err) {
                     console.log("bla");
                     console.log(err);
-                    document.getElementById("ausgabe").innerHTML = err;
                 }
                 function endWatch() {
-                    document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
                     setTimeout(startWatch, 1000);
                 }
             }

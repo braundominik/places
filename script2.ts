@@ -64,6 +64,7 @@ namespace places {
                         setTimeout(endWatch, 1000);
                     }
 
+                    let hoehe: number = 10;
                     function position(position) {
                         console.log(position);
                         console.log(lat);
@@ -79,8 +80,10 @@ namespace places {
                         }
                         oldRange = dist;
 
-                        document.getElementById("ausgabe").innerHTML = "Accuracy " + position.coords.accuracy + "Range " + dist;
-
+                        //                        document.getElementById("ausgabe").innerHTML = "Accuracy " + position.coords.accur                        
+                        document.getElementById("ausgabe").innerHTML += "Lat " + position.coords.latitude + "Long " + position.coords.longitude + "</br>";
+                        hoehe = hoehe + 20;
+                        document.getElementById("ausgabe").style.height = hoehe + "px";
 
                     }
                 }
@@ -88,12 +91,10 @@ namespace places {
                 function error(err: any): void {
                     console.log("bla");
                     console.log(err);
-                    document.getElementById("ausgabe").innerHTML = err;
                 }
 
 
                 function endWatch(): void {
-                    document.getElementById("ausgabe").innerHTML = ("oldRange" + oldRange);
                     setTimeout(startWatch, 1000);
                 }
 
