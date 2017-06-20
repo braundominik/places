@@ -32,3 +32,6 @@ body{
 	border:0.5vw solid blue;
 	width:99%;
 }
+#download{
+	position:absolute;
+}

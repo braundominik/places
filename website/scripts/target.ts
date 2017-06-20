@@ -1,20 +1,19 @@
-namespace places {
+namespace placesFin {
     var x: HTMLElement = document.getElementById("ausgabe");
     document.addEventListener("DOMContentLoaded", init);
-    var poi: string[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
+    var poi: string[] = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald", "Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
+    var poiTar: string[] = [poi[0]];
     var oldRange: number = 99999999999999999;
     var latyay: any;
     var lngyay: any;
 
     function init(): void {
-
-        document.getElementById("wrapper").addEventListener("click", geocodeMe);
+        geocodeMe();
     }
 
 
     function vibrate(): void {
         navigator.vibrate(500);
-        console.log("vibrate");
     }
 
     function getLocation(lat: any, lng: any): void {
@@ -40,7 +39,7 @@ namespace places {
 
     function geocodeMe(): void {
         var geocoder: any = new google.maps.Geocoder();
-        var address: string = poi[0];
+        var address: string = poiTar[0];
 
         geocoder.geocode({ "address": address }, function(results: any, status: any): void {
 
@@ -80,10 +79,7 @@ namespace places {
                         }
                         oldRange = dist;
 
-                        //                        document.getElementById("ausgabe").innerHTML = "Accuracy " + position.coords.accur                        
-                        document.getElementById("ausgabe").innerHTML += position.coords.latitude + "," + position.coords.longitude + "</br>";
-                        hoehe = hoehe + 20;
-                        document.getElementById("ausgabe").style.height = hoehe + "px";
+                        document.getElementById("showRange").innerHTML = "Range" + dist;
 
                     }
                 }

@@ -1,13 +1,26 @@
-<!DOCTYPE html><html><title>unnamedApp</title>
+<!DOCTYPE html>
+<html>
+<title>unnamedApp</title>
 <head>
 <link rel="stylesheet" href="css.css">
-<script src="https//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https//maps.googleapis.com/maps/api/js?key=AIzaSyCvET66xGzrZGKTGrx9nQIH-Y7T2nnwxRk"></script>
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCvET66xGzrZGKTGrx9nQIH-Y7T2nnwxRk&libraries=geometry"></script>
+<script
+	src="https//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https//maps.googleapis.com/maps/api/js?key=AIzaSyCvET66xGzrZGKTGrx9nQIH-Y7T2nnwxRk"></script>
+<script type="text/javascript"
+	src="https://maps.google.com/maps/api/js?key=AIzaSyCvET66xGzrZGKTGrx9nQIH-Y7T2nnwxRk&libraries=geometry"></script>
 <script type="text/javascript" src="script2.js"></script>
+<script type="text/javascript" src="download.js"></script>
 </head>
 <body>
-<div id="ausgabe"></div>
-<div id="wrapper"><span id="content">Start your Journey</span></div>
-<img id="arrow" src="arrow.png" style="position: absolute; top: 80px; left: 105px;">
-</body></html>
+	<div id="ausgabe"></div>
+	<div id="wrapper">
+		<span id="content">Start your Journey</span>
+	</div>
+	<div id = "download">
+		<textarea id="textbox">Type something here</textarea>
+		<button id="create">Create file</button>
+		<a download="info.txt" id="downloadlink" style="display: none">Download</a>
+	</div>
+</body>
+</html>

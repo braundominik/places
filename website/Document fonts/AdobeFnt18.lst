@@ -1,0 +1,132 @@
+%!Adobe-FontList 1.18
+%Locale:0x407
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:FuturaStd-Heavy
+FamilyName:Futura Std
+StyleName:Heavy
+FullName:Futura Std Heavy
+MenuName:Futura Std Medium
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:C:\Users\Marcel\Desktop\Präsentation UX-Design Ordner\Document fonts\FuturaStd-Heavy.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:27772
+FileModTime:1187748792
+WeightClass:650
+WidthClass:5
+AngleClass:0
+DesignSize:120
+NameArray:0,Mac,4,Futura Std Heavy
+NameArray:0,Win,1,Futura Std Medium
+NameArray:0,Win,16,Futura Std
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:FuturaStd-Light
+FamilyName:Futura Std
+StyleName:Light
+FullName:Futura Std Light
+MenuName:Futura Std Light
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\Marcel\Desktop\Präsentation UX-Design Ordner\Document fonts\FuturaStd-Light.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:27568
+FileModTime:1187748792
+WeightClass:300
+WidthClass:5
+AngleClass:0
+DesignSize:120
+NameArray:0,Mac,4,Futura Std Light
+NameArray:0,Win,1,Futura Std Light
+NameArray:0,Win,16,Futura Std
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:FuturaStd-LightOblique
+FamilyName:Futura Std
+StyleName:Light Oblique
+FullName:Futura Std Light Oblique
+MenuName:Futura Std Light
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\Marcel\Desktop\Präsentation UX-Design Ordner\Document fonts\FuturaStd-LightOblique.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:29088
+FileModTime:1187748792
+WeightClass:300
+WidthClass:5
+AngleClass:1
+DesignSize:120
+NameArray:0,Mac,4,Futura Std Light Oblique
+NameArray:0,Win,1,Futura Std Light
+NameArray:0,Win,16,Futura Std
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:FuturaStd-Medium
+FamilyName:Futura Std
+StyleName:Medium
+FullName:Futura Std Medium
+MenuName:Futura Std Medium
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\Marcel\Desktop\Präsentation UX-Design Ordner\Document fonts\FuturaStd-Medium.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:26892
+FileModTime:1187748792
+WeightClass:500
+WidthClass:5
+AngleClass:0
+DesignSize:120
+NameArray:0,Mac,4,Futura Std Medium
+NameArray:0,Win,1,Futura Std Medium
+NameArray:0,Win,16,Futura Std
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:MinionPro-Regular
+FamilyName:Minion Pro
+StyleName:Regular
+FullName:Minion Pro
+MenuName:Minion Pro
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\Marcel\Desktop\Präsentation UX-Design Ordner\Document fonts\MinionPro-Regular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:218640
+FileModTime:1361531780
+WeightClass:400
+WidthClass:5
+AngleClass:0
+DesignSize:110
+NameArray:0,Mac,4,Minion Pro
+NameArray:0,Win,1,Minion Pro
+%EndFont
+

@@ -1,17 +1,17 @@
-var places;
-(function (places) {
+var placesFin;
+(function (placesFin) {
     var x = document.getElementById("ausgabe");
     document.addEventListener("DOMContentLoaded", init);
-    var poi = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
+    var poi = ["Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald", "Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
+    var poiTar = [poi[0]];
     var oldRange = 99999999999999999;
     var latyay;
     var lngyay;
     function init() {
-        document.getElementById("wrapper").addEventListener("click", geocodeMe);
+        geocodeMe();
     }
     function vibrate() {
         navigator.vibrate(500);
-        console.log("vibrate");
     }
     function getLocation(lat, lng) {
         lat = lat;
@@ -33,7 +33,7 @@ var places;
     }
     function geocodeMe() {
         var geocoder = new google.maps.Geocoder();
-        var address = poi[0];
+        var address = poiTar[0];
         geocoder.geocode({ "address": address }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 let lat = results[0].geometry.location.lat();
@@ -63,10 +63,7 @@ var places;
                             console.log("vibrate");
                         }
                         oldRange = dist;
-                        //                        document.getElementById("ausgabe").innerHTML = "Accuracy " + position.coords.accur                        
-                        document.getElementById("ausgabe").innerHTML += position.coords.latitude + "," + position.coords.longitude + "</br>";
-                        hoehe = hoehe + 20;
-                        document.getElementById("ausgabe").style.height = hoehe + "px";
+                        document.getElementById("showRange").innerHTML = "Range" + dist;
                     }
                 }
                 function error(err) {
@@ -82,5 +79,5 @@ var places;
             }
         });
     }
-})(places || (places = {}));
-//# sourceMappingURL=script2.js.map
+})(placesFin || (placesFin = {}));
+//# sourceMappingURL=target.js.map
