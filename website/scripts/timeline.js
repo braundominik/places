@@ -35,6 +35,9 @@ var timeline;
             }
         }
         document.getElementById("choseTime").style.color = "white";
+        document.getElementById("choseTime").addEventListener("click", function () {
+            location.href = "4.html";
+        });
     }
 })(timeline || (timeline = {}));
 //# sourceMappingURL=timeline.js.map

@@ -42,6 +42,9 @@ namespace timeline {
         }
 
         document.getElementById("choseTime").style.color = "white";
+        document.getElementById("choseTime").addEventListener("click", function(): void {
+            location.href = "4.html";
+        });
     }
 
 }
