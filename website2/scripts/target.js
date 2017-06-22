@@ -37,7 +37,11 @@ var placesFin2;
     function giveRangeBetween(_positionLat, _positionLng) {
         let org = new google.maps.LatLng(_positionLat, _positionLng);
         let dest = new google.maps.LatLng(latu, lngu);
-        document.getElementById("showRange").innerHTML = (google.maps.geometry.spherical.computeDistanceBetween(org, dest) / 1000).toFixed(2);
+        let range = (google.maps.geometry.spherical.computeDistanceBetween(org, dest)).toFixed(0);
+        document.getElementById("showRange").innerHTML = range + "m";
+        if (range < 20) {
+            window.location.href = "ibau.html";
+        }
     }
 })(placesFin2 || (placesFin2 = {}));
 //# sourceMappingURL=target.js.map

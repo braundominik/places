@@ -1,4 +1,4 @@
-﻿
+
 body {
 	margin: 0px;
 	padding: 0px;
@@ -144,5 +144,9 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 80px;
+}
+
+#showRange{
+	margin-top:4vh;
 }
 
