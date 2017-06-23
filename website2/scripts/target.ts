@@ -54,7 +54,7 @@ namespace placesFin2 {
         let range = (google.maps.geometry.spherical.computeDistanceBetween(org, dest)).toFixed(0);
         document.getElementById("showRange").innerHTML = range + "m";
 
-        if (range < 20) {
+        if (range < 10) {
             window.location.href = "ibau.html";
 
         }
