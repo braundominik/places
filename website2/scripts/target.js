@@ -5,11 +5,15 @@ var placesFin2;
     var poi = ["Unterallmendstra�e 21, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald", "Robert-Gerwig-Platz 1, 78120 Furtwangen im Schwarzwald", "Friedrichstrasse 17, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald", "Marktpl. 9, 78120 Furtwangen im Schwarzwald", "Colnestrasse 6, 78120 Furtwangen im Schwarzwald"];
     let latu = 48.0497798;
     let lngu = 8.210321;
+    let oldRange = 999999999999;
     function init() {
         //        for (let x: number = 0; x < poi.length; x++) {
         //            setTimeout(geocode(x), (x * 1000));
         //        }
         var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 5000, enableHighAccuracy: true });
+    }
+    function vibrate() {
+        navigator.vibrate(500);
     }
     function geocode(_zahl) {
         let xhr = new XMLHttpRequest();
@@ -41,6 +45,9 @@ var placesFin2;
         document.getElementById("showRange").innerHTML = range + "m";
         if (range < 20) {
             window.location.href = "ibau.html";
+        }
+        if (range > oldRange) {
+            vibrate();
         }
     }
 })(placesFin2 || (placesFin2 = {}));
